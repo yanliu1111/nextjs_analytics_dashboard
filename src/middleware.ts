@@ -1,9 +1,18 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export default async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname === '/') {
-    console.log('Page visit', req.nextUrl.pathname);
+    try {
+      //namespace pageview, to attribute the event
+      analytics.track('pageview', {
+        page: '/',
+        country: req.geo?.country,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
+  return NextResponse.next();
 }
 
 export const matcher = {
