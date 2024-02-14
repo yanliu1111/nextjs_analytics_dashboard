@@ -1,7 +1,13 @@
 import { analytics } from '@/utils/analytics';
 
 const Page = async () => {
-  const pageview = await analytics.retrieve('pageview', '14/02/2024');
-  return <pre className='text-white'>{JSON.stringify(pageview)}</pre>;
+  const pageview = await analytics.retrieveDays('pageview', 2);
+  return (
+    <div className='min-h-screen w-full py-12 flex justify-center items-center'>
+      <div className='relative w-full max-w-6xl mx-auto text-white'>
+        <AnalyticsDashboard />
+      </div>
+    </div>
+  );
 };
 export default Page;

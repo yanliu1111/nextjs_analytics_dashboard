@@ -1,6 +1,6 @@
 import { getDate } from '@/utils';
-import { redis } from '@/lib/redis';
 import { parse } from 'date-fns'
+import { redis } from '@/lib/redis';
 
 type AnalyticsArgs = {
   retention?: number;
@@ -65,6 +65,6 @@ export class Analytics {
     };
     }
   }
-}
+
 
 export const analytics = new Analytics();
