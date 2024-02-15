@@ -13,6 +13,7 @@
 - Upstash Redis
 - date-fns
 - @tremor/react-charts (https://www.tremor.so/) for graphing
+- react-country-flag
 
 ## Structure:
 

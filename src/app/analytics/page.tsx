@@ -67,6 +67,7 @@ const Page = async () => {
           avgVisitorsPerDay={avgVisitorsPerDay}
           amtVisitorsToday={amtVisitorsToday}
           timeSeriesPageviews={pageviews}
+          topCountries={topCountries}
         />
       </div>
     </div>
