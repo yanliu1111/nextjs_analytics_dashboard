@@ -6,6 +6,8 @@ const Page = async () => {
   const TRACKING_DAYS = 7;
   // you can define the type of pageviews, like contact-me, purchase-product, etc.
   const pageviews = await analytics.retrieveDays('pageview', TRACKING_DAYS);
+  const exports = await analytics.retrieveDays('exports', TRACKING_DAYS);
+
   const totalPageviews = pageviews.reduce((acc, curr) => {
     return (
       acc +
@@ -15,8 +17,30 @@ const Page = async () => {
     );
   }, 0);
 
+  //add exports to the total pageviews
+  const totalExports = exports.reduce((acc, curr) => {
+    return (
+      acc +
+      curr.events.reduce((acc, curr) => {
+        return acc + Object.values(curr)[0]!;
+      }, 0)
+    );
+  }, 0);
+
   const avgVisitorsPerDay = (totalPageviews / TRACKING_DAYS).toFixed(1); //toFixed(1) so there is only 1 decimal place
+  // add avgExportsPerDay
+  const avgExportsPerDay = (totalExports / TRACKING_DAYS).toFixed(1);
+
   const amtVisitorsToday = pageviews
+    .filter((ev) => ev.date === getDate())
+    .reduce((acc, curr) => {
+      return (
+        acc +
+        curr.events.reduce((acc, curr) => acc + Object.values(curr)[0]!, 0)
+      );
+    }, 0);
+  // add amtExportsToday
+  const amtExportsToday = exports
     .filter((ev) => ev.date === getDate())
     .reduce((acc, curr) => {
       return (
@@ -65,7 +89,9 @@ const Page = async () => {
       <div className='relative w-full max-w-6xl mx-auto text-white'>
         <AnalyticsDashboard
           avgVisitorsPerDay={avgVisitorsPerDay}
+          avgExportsPerDay={avgExportsPerDay}
           amtVisitorsToday={amtVisitorsToday}
+          amtExportsToday={amtExportsToday}
           timeSeriesPageviews={pageviews}
           topCountries={topCountries}
         />

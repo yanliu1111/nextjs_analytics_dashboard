@@ -8,7 +8,9 @@ import { analytics } from '@/utils/analytics';
 
 interface AnalyticsDashboardProps {
   avgVisitorsPerDay: string; // toFixed(1) so there is string
+  avgExportsPerDay: string;
   amtVisitorsToday: number;
+  amtExportsToday: number;
   timeSeriesPageviews: Awaited<ReturnType<typeof analytics.retrieveDays>>;
   topCountries: [string, number][];
 }
@@ -42,7 +44,9 @@ const Badge = ({ percentage }: { percentage: number }) => {
 
 const AnalyticsDashboard = ({
   avgVisitorsPerDay,
+  avgExportsPerDay,
   amtVisitorsToday,
+  amtExportsToday,
   timeSeriesPageviews,
   topCountries,
 }: AnalyticsDashboardProps) => {
@@ -58,6 +62,14 @@ const AnalyticsDashboard = ({
           </p>
         </Card>
         <Card className='w-fiull mx-auto max-w-xs'>
+          <p className='text-tremor-default text-dark-tremor-content'>
+            Avg. explore/day
+          </p>
+          <p className='text-3xl text-dark-tremor-content-strong font-semibold'>
+            {avgExportsPerDay}
+          </p>
+        </Card>
+        <Card className='w-fiull mx-auto max-w-xs'>
           <p className='flex gap-2.5 items-center text-tremor-default text-dark-tremor-content'>
             Vistor Today
             <Badge
@@ -68,6 +80,20 @@ const AnalyticsDashboard = ({
           </p>
           <p className='text-3xl text-dark-tremor-content-strong font-semibold'>
             {amtVisitorsToday}
+          </p>
+        </Card>
+        {/* card for explore */}
+        <Card className='w-fiull mx-auto max-w-xs'>
+          <p className='flex gap-2.5 items-center text-tremor-default text-dark-tremor-content'>
+            Exports Today
+            <Badge
+              percentage={
+                (amtExportsToday / Number(avgExportsPerDay) - 1) * 100
+              }
+            />
+          </p>
+          <p className='text-3xl text-dark-tremor-content-strong font-semibold'>
+            {amtExportsToday}
           </p>
         </Card>
       </div>
