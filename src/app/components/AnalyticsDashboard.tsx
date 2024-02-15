@@ -1,14 +1,20 @@
 'use client';
 
-import { Card } from '@tremor/react';
+import { ArrowDownRight, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { BarChart, Card } from '@tremor/react';
+
+import ReactCountryFlag from 'react-country-flag';
+import { analytics } from '@/utils/analytics';
 
 interface AnalyticsDashboardProps {
   avgVisitorsPerDay: string; // toFixed(1) so there is string
   amtVisitorsToday: number;
+  timeSeriesPageviews: Awaited<ReturnType<typeof analytics.retrieveDays>>;
 }
 const AnalyticsDashboard = ({
   avgVisitorsPerDay,
   amtVisitorsToday,
+  timeSeriesPageviews,
 }: AnalyticsDashboardProps) => {
   return (
     <div className='flex flex-col gap-6'>
@@ -30,6 +36,22 @@ const AnalyticsDashboard = ({
           </p>
         </Card>
       </div>
+      <Card>
+        {timeSeriesPageviews ? (
+          <BarChart
+            allowDecimals={false}
+            showAnimation
+            data={timeSeriesPageviews.map((day) => ({
+              name: day.date,
+              Visitors: day.events.reduce((acc, curr) => {
+                return acc + Object.values(curr)[0]!;
+              }, 0),
+            }))}
+            categories={['Visitors']}
+            index='name'
+          />
+        ) : null}
+      </Card>
     </div>
   );
 };
