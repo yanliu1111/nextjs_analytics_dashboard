@@ -85,7 +85,7 @@ const AnalyticsDashboard = ({
         {/* card for explore */}
         <Card className='w-fiull mx-auto max-w-xs'>
           <p className='flex gap-2.5 items-center text-tremor-default text-dark-tremor-content'>
-            Exports Today
+            Explore Today
             <Badge
               percentage={
                 (amtExportsToday / Number(avgExportsPerDay) - 1) * 100
