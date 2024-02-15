@@ -14,6 +14,7 @@
 - date-fns
 - @tremor/react-charts (https://www.tremor.so/) for graphing
 - react-country-flag
+- lucide-react: icons library
 
 ## Structure:
 
