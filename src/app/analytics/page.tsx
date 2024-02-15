@@ -6,7 +6,7 @@ const Page = async () => {
   const TRACKING_DAYS = 7;
   // you can define the type of pageviews, like contact-me, purchase-product, etc.
   const pageviews = await analytics.retrieveDays('pageview', TRACKING_DAYS);
-  const exports = await analytics.retrieveDays('exports', TRACKING_DAYS);
+  const exports = await analytics.retrieveDays('explore', TRACKING_DAYS);
 
   const totalPageviews = pageviews.reduce((acc, curr) => {
     return (

@@ -38,6 +38,5 @@ export const matchers = [
     matcher: ['/contact'],
   },
 ];
-// how about ['/contact']? Can I don matcher for contact page?
 
 // recommended, custom tracking logic, you can track page visits you can track many things, just be careful that you are not too invasive, if you use cookies, you also notify the user we are not going to do that. but we still have really insightful tracking without any cookie notices.
