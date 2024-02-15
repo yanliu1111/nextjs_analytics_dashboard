@@ -2,7 +2,7 @@
 
 ## 📝 Description:
 
-- Build a analytics system user tracking, time series dashboard, which can be located in any admin page for User management. This is my second data plateform dashboard, the different is I am using Nextjs and typescripts.
+- Build a analytics system user tracking, time series dashboard (Home page, and contact page), which can be located in any admin page for User management. This is my second data plateform dashboard, the different is I am using Nextjs and typescripts.
 
 - In this project, I understand metadata and namespace for making the data retrieval faster.
 
