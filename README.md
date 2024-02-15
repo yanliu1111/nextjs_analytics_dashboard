@@ -48,4 +48,4 @@ const topCountries = [...topCountriesMap.entries()]
   .slice(0, 5); //top 5 countries
 ```
 
-💌 Happy coding in Valentine's day, **history**: On February 14, 1946, the world's first general-purpose computer was born at the University of Pennsylvania in the United States. On this special day, please spend some extra time ⏳ with your computer.
+💌 Happy coding in Valentine's day, **history**: On February 14, 1946, the world's first ENIAC (Electronic Numerical Intergrator And Computer) was born at the University of Pennsylvania in the United States. On this special day, please spend some extra time ⏳ with your computer 👩‍💻👨‍💻.
